@@ -6,41 +6,34 @@ class MiCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: double.infinity,
-                width: 100,
-                color: Colors.red,
+        home: Scaffold(
+      backgroundColor: Colors.teal,
+      body: SafeArea(
+        child: Column(
+          children: [
+            CircleAvatar(
+              radius: 60,
+              backgroundImage: AssetImage('assets/man.jpg'),
+            ),
+            Text(
+              'Grumpy Dude',
+              style: TextStyle(
+                fontSize: 40,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.green.shade600,
-                  ),
-                ],
+            ),
+            Text(
+              'THE GRUMPER',
+              style: TextStyle(
+                fontSize: 25,
+                color: Colors.teal[100],
+                letterSpacing: 1,
               ),
-              Container(
-                height: double.infinity,
-                width: 100,
-                color: Colors.blue,
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
-    );
+    ));
   }
 }
