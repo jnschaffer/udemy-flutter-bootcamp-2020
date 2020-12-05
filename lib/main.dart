@@ -66,11 +66,11 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
+                  brain.playRound(true);
                   if (brain.isGameOver()) {
                     Alert(context: context, title: 'Game Over!').show();
                   }
                 });
-                brain.playRound(true);
               },
             ),
           ),
@@ -88,9 +88,12 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
+                //The user picked false
                 setState(() {
                   brain.playRound(false);
+                  if (brain.isGameOver()) {
+                    Alert(context: context, title: 'Game Over!').show();
+                  }
                 });
               },
             ),
