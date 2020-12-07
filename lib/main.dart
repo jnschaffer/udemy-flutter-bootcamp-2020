@@ -30,6 +30,7 @@ class _InputPageState extends State<InputPage> {
       body: Column(
         children: [
           Expanded(
+            flex: 3,
             child: Row(
               children: [
                 Expanded(
@@ -42,9 +43,11 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
+            flex: 3,
             child: ReusableCard(),
           ),
           Expanded(
+            flex: 3,
             child: Row(
               children: [
                 Expanded(
@@ -54,6 +57,26 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(),
                 ),
               ],
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  'CALCULATE YOUR BMI',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Color(0xFFFF0066),
+              ),
             ),
           ),
         ],
