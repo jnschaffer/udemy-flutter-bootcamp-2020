@@ -38,13 +38,7 @@ build/
 **/android/**/GeneratedPluginRegistrant.java
 
 # iOS/XCode related
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 **/ios/Flutter/flutter_export_environment.sh
->>>>>>> 860baf9824a922e5d9ab398e76f910c098183ece
-=======
->>>>>>> 6bd06442185495472d86be585e482963305c7413
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
 **/ios/**/*.moved-aside
