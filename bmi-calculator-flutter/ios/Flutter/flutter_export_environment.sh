@@ -1,8 +1,8 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/usr/local/Caskroom/flutter/1.22.4/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/joakimschaffer/dev/flutter/udemy_lutter_dev_bootcamp/bmi-calculator-flutter"
-export "FLUTTER_TARGET=/Users/joakimschaffer/dev/flutter/udemy_lutter_dev_bootcamp/bmi-calculator-flutter/lib/main.dart"
+export "FLUTTER_APPLICATION_PATH=/Users/joakimschaffer/dev/flutter/udemy_flutter_dev_bootcamp_2020/bmi-calculator-flutter"
+export "FLUTTER_TARGET=/Users/joakimschaffer/dev/flutter/udemy_flutter_dev_bootcamp_2020/bmi-calculator-flutter/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "OTHER_LDFLAGS=$(inherited) -framework Flutter"
