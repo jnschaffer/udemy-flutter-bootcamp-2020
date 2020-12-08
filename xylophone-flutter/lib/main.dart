@@ -10,11 +10,11 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$number.wav');
   }
 
-  Expanded tangent(Color color, int sound_file) {
+  Expanded tangent(Color color, int soundFile) {
     return Expanded(
       child: FlatButton(
         onPressed: () {
-          playSound(sound_file);
+          playSound(soundFile);
         },
         color: color,
       ),
