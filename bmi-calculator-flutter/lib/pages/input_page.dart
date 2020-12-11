@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/bloc.dart';
 import 'package:bmi_calculator/components/RoundButton.dart';
 import 'package:bmi_calculator/components/icon_label_data.dart';
 import 'package:bmi_calculator/components/main_button.dart';
@@ -5,7 +6,7 @@ import 'package:bmi_calculator/pages/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/reusable_card.dart';
-import 'gender_enum.dart';
+import '../gender_enum.dart';
 import 'package:bmi_calculator/constants.dart';
 
 class InputPage extends StatefulWidget {
@@ -241,7 +242,9 @@ class _InputPageState extends State<InputPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ResultPage(),
+                    builder: (context) => ResultPage(
+                      Bloc().calculate(height, weight),
+                    ),
                   ),
                 );
               },
