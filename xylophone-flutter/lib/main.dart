@@ -17,6 +17,7 @@ class XylophoneApp extends StatelessWidget {
           playSound(soundFile);
         },
         color: color,
+        child: null,
       ),
     );
   }
