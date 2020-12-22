@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const routeCity = 'city_screen';
+const routeLoading = 'loading_screen';
+const routeLocation = 'location_screen';
+
 const kTempTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
   fontSize: 100.0,
