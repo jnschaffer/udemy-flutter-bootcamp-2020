@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const apiKey = '88d27f94df8adc9b25791040c4a77617';
+
 const routeCity = 'city_screen';
 const routeLoading = 'loading_screen';
 const routeLocation = 'location_screen';

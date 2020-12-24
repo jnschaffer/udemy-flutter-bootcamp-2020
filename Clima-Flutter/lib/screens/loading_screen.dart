@@ -1,4 +1,3 @@
-import 'package:clima/utilities/constants.dart';
 import 'package:flutter/material.dart';
 
 class LoadingScreen extends StatefulWidget {
@@ -14,7 +13,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
         child: RaisedButton(
           onPressed: () {
             //Get the current location
-            Navigator.pushNamed(context, routeLocation);
           },
           child: Text('Get Location'),
         ),
