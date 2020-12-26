@@ -1,3 +1,4 @@
+import 'package:clima/utilities/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/services/location.dart';
 
@@ -13,6 +14,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     location.getCurrentLocation();
+    Navigator.pushNamed(context, routeCity, arguments: );
   }
 
   @override
