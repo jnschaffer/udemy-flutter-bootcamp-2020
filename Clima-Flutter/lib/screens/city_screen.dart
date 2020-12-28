@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
+import 'package:location/location.dart';
 
 class CityScreen extends StatefulWidget {
   @override
@@ -9,6 +10,8 @@ class CityScreen extends StatefulWidget {
 class _CityScreenState extends State<CityScreen> {
   @override
   Widget build(BuildContext context) {
+    LocationData location = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -38,7 +41,7 @@ class _CityScreenState extends State<CityScreen> {
               FlatButton(
                 onPressed: () {},
                 child: Text(
-                  'Get Weather',
+                  location.toString(),
                   style: kButtonTextStyle,
                 ),
               ),

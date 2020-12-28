@@ -14,7 +14,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     location.getCurrentLocation();
-    Navigator.pushNamed(context, routeCity, arguments: );
   }
 
   @override
@@ -24,7 +23,8 @@ class _LoadingScreenState extends State<LoadingScreen> {
         child: RaisedButton(
           onPressed: () {
             //Get the current location
-            print(location.position);
+            Navigator.pushNamed(context, routeCity,
+                arguments: location.position);
           },
           child: Text('Get Location'),
         ),

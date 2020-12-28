@@ -6,6 +6,8 @@ class CustomLocation {
   Future<void> getCurrentLocation() async {
     try {
       position = await Location().getLocation();
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
