@@ -1,3 +1,5 @@
+import 'package:clima/services/networking.dart';
+import 'package:clima/services/weather.dart';
 import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 
@@ -9,6 +11,9 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   @override
   Widget build(BuildContext context) {
+    Networking networking = ModalRoute.of(context).settings.arguments;
+    int temp = networking.weatherData['main']['temp'].round() - 272;
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -49,11 +54,12 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
-                      '32°',
+                      temp.toString(),
                       style: kTempTextStyle,
                     ),
                     Text(
-                      '☀️',
+                      WeatherModel.getWeatherIcon(
+                          networking.weatherData['weather'][0]['id'].round()),
                       style: kConditionTextStyle,
                     ),
                   ],
@@ -62,7 +68,9 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  WeatherModel.getMessage(temp) +
+                      ' in ' +
+                      networking.weatherData['name'],
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),

@@ -1,6 +1,7 @@
-import 'package:clima/utilities/constants.dart';
+import 'package:clima/services/networking.dart';
 import 'package:flutter/material.dart';
-import 'package:clima/services/location.dart';
+import 'package:location/location.dart';
+import 'package:clima/utilities/constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -8,12 +9,25 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  CustomLocation location = CustomLocation();
+  LocationData location;
+
+  Future<void> getCurrentLocation() async {
+    try {
+      location = await Location().getLocation();
+
+      Networking networking = Networking(location);
+      await networking.makeRequest();
+
+      Navigator.pushNamed(context, routeLocation, arguments: networking);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    location.getCurrentLocation();
+    getCurrentLocation();
   }
 
   @override
@@ -23,8 +37,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
         child: RaisedButton(
           onPressed: () {
             //Get the current location
-            Navigator.pushNamed(context, routeCity,
-                arguments: location.position);
           },
           child: Text('Get Location'),
         ),
