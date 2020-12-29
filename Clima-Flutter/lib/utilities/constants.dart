@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kApiKey = '88d27f94df8adc9b25791040c4a77617';
+const kApiKey = ''; //depreciated - account deletion.
 
 const routeCity = 'city_screen';
 const routeLoading = 'loading_screen';
