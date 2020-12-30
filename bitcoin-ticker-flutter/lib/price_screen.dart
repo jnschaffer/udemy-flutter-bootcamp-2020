@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:bitcoin_ticker/CoinCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'coin_data.dart';
-import 'CoinCard.dart';
+import 'package:bitcoin_ticker/coin_data.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -54,14 +53,43 @@ class _PriceScreenState extends State<PriceScreen> {
     return currenciesList.map((value) => Text(value)).toList();
   }
 
+  Map<String, String> rates = {};
+  bool isWaiting = false;
+
+  List<Widget> makeCards() {
+    List<Widget> cryptoCards = [];
+
+    rates.forEach((coin, rate) {
+      cryptoCards.add(CoinCard(
+        coin: coin,
+        currency: selectedCurrency,
+        rate: rate,
+      ));
+    });
+
+    return cryptoCards;
+  }
+
+  Map<String, String> getRates() {
+    Map<String, String> temp = {};
+    cryptoList.forEach((coin) {
+      getCoinResponse(coin, selectedCurrency).then((response) {
+        double rate = parseResponse(response);
+        temp.addAll({coin: rate.toStringAsFixed(0)});
+      });
+    });
+    return temp;
+  }
+
   @override
   void initState() {
     super.initState();
+    getRates();
+    makeCards();
   }
 
   @override
   Widget build(BuildContext context) {
-    CoinCard card = CoinCard('BTC', 'USD');
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
@@ -71,9 +99,7 @@ class _PriceScreenState extends State<PriceScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Column(
-            children: <Widget>[
-              card.createCard(),
-            ],
+            children: <Widget>[],
           ),
           Container(
             height: 150.0,

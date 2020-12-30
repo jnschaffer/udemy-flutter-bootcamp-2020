@@ -43,12 +43,13 @@ Future<http.Response> getCoinResponse(String coin, String currency) async {
   return await http.get(coinApiUrl, headers: headers);
 }
 
-dynamic parseResponse(http.Response response) {
+double parseResponse(http.Response response) {
   /* if (response.statusCode == 200) {
     return jsonDecode(response.body);
   }
   print(response.statusCode);
   return response.statusCode.toString(); */
 
-  return jsonDecode(exampleResponse);
+  dynamic jsonObject = jsonDecode(exampleResponse);
+  return jsonObject['rate'];
 }

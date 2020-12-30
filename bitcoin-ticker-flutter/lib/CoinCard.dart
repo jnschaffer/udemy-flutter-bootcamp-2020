@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
-import 'coin_data.dart';
 
-class CoinCard {
-  String coin;
-  String currency;
-  String rate;
-  String outputString;
+class CoinCard extends StatelessWidget {
+  final String coin;
+  final String currency;
+  final String rate;
 
-  CoinCard(this.coin, this.currency) {
-    getCoinResponse(coin, currency).then((response) {
-      dynamic parsed = parseResponse(response);
-      double temp = parsed['rate'];
-      rate = temp.toStringAsFixed(0);
-      print(rate);
-    });
+  CoinCard({this.coin, this.currency, this.rate});
 
-    outputString = '1 $coin = $rate $currency';
-  }
-
-  Widget createCard() {
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
       child: Card(
@@ -30,7 +20,7 @@ class CoinCard {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
           child: Text(
-            outputString,
+            '1 $coin = $rate $currency',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20.0,
