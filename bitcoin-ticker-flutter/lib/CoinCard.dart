@@ -7,7 +7,14 @@ class CoinCard {
   String rate;
   String outputString;
 
-  CoinCard(this.coin, this.currency, this.rate) {
+  CoinCard(this.coin, this.currency) {
+    getCoinResponse(coin, currency).then((response) {
+      dynamic parsed = parseResponse(response);
+      double temp = parsed['rate'];
+      rate = temp.toStringAsFixed(0);
+      print(rate);
+    });
+
     outputString = '1 $coin = $rate $currency';
   }
 

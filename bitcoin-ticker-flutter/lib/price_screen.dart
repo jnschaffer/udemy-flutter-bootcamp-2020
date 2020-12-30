@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:bitcoin_ticker/CoinCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
+import 'CoinCard.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -59,8 +61,7 @@ class _PriceScreenState extends State<PriceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    getCoinResponse('BTC', 'EUR').then((value) =>
-        print(parseResponse(value))); //TODO: this works, but got ratelimited.
+    CoinCard card = CoinCard('BTC', 'USD');
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
@@ -69,7 +70,11 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          //Column(children: null),
+          Column(
+            children: <Widget>[
+              card.createCard(),
+            ],
+          ),
           Container(
             height: 150.0,
             alignment: Alignment.center,
