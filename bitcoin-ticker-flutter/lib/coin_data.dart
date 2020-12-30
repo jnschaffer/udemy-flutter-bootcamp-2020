@@ -33,28 +33,17 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-class CoinData {
-  String coin;
-  String currency;
-  String coinApiUrl;
-  dynamic coinData;
-  String rate;
+Future<http.Response> getCoinResponse(String coin, String currency) async {
+  String coinApiUrl = 'https://rest.coinapi.io/v1/exchangerate/$coin/$currency';
+  Map<String, String> headers = {'X-CoinAPI-Key': coinApiKey};
 
-  Map<String, String> headers;
+  return await http.get(coinApiUrl, headers: headers);
+}
 
-  CoinData({this.coin = 'BTC', this.currency = 'EUR', this.headers}) {
-    coinApiUrl = 'https://rest.coinapi.io/v1/exchangerate/$coin/$currency';
-    headers ??= {'X-CoinAPI-Key': coinApiKey};
-    rate ??= '?';
+String parseResponse(http.Response response) {
+  if (response.statusCode == 200) {
+    return jsonDecode(response.body);
   }
 
-  Future<void> getCoinData() async {
-    http.Response response = await http.get(coinApiUrl, headers: headers);
-
-    if (response.statusCode == 200) {
-      coinData = jsonDecode(response.body);
-      double temp = coinData['rate'];
-      rate = temp.toStringAsFixed(2);
-    }
-  }
+  return response.statusCode.toString();
 }
