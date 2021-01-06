@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+const String welcomeScreenRoute = 'welcome_screen_route';
+const String registrationScreenRoute = 'registration_screen_route';
+const String loginScreenRoute = 'login_screen_route';
+const String chatScreenRoute = 'chat_screen_route';
+
 const kSendButtonTextStyle = TextStyle(
   color: Colors.lightBlueAccent,
   fontWeight: FontWeight.bold,
